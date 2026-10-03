@@ -1,0 +1,13 @@
+services:
+  brighton-bot:
+    build: .
+    container_name: brighton-bot
+    restart: unless-stopped
+    volumes:
+      # praw.ini (credentials, chmod 600) and replied_to.txt live here
+      - ./data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
